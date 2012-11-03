@@ -2,7 +2,6 @@ require 'linguist/language'
 require 'linguist/mime'
 require 'linguist/pathname'
 
-require 'escape_utils'
 require 'yaml'
 
 module Linguist
@@ -53,24 +52,6 @@ module Linguist
     def content_type
       @content_type ||= binary? ? mime_type :
         (encoding ? "text/plain; charset=#{encoding.downcase}" : "text/plain")
-    end
-
-    # Public: Get the Content-Disposition header value
-    #
-    # This value is used when serving raw blobs.
-    #
-    #   # => "attachment; filename=file.tar"
-    #   # => "inline"
-    #
-    # Returns a content disposition String.
-    def disposition
-      if text? || image?
-        'inline'
-      elsif name.nil?
-        "attachment"
-      else
-        "attachment; filename=#{EscapeUtils.escape_url(pathname.basename)}"
-      end
     end
 
     def encoding
