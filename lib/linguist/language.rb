@@ -1,5 +1,4 @@
 require 'yaml'
-require 'pygments'
 
 module Linguist
   # Language names that are recognizable by GitHub. Defined languages
@@ -208,10 +207,6 @@ module Linguist
 
       # Set aliases
       @aliases = [default_alias_name] + (attributes[:aliases] || [])
-
-      # Lookup Lexer object
-      @lexer = Pygments::Lexer.find_by_name(attributes[:lexer] || name) ||
-        raise(ArgumentError, "#{@name} is missing lexer")
 
       # Set legacy search term
       @search_term = attributes[:search_term] || default_alias_name

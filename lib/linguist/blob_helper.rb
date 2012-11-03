@@ -2,9 +2,7 @@ require 'linguist/language'
 require 'linguist/mime'
 require 'linguist/pathname'
 
-require 'charlock_holmes'
 require 'escape_utils'
-require 'pygments'
 require 'yaml'
 
 module Linguist
@@ -79,15 +77,6 @@ module Linguist
       if hash = detect_encoding
         hash[:encoding]
       end
-    end
-
-    # Try to guess the encoding
-    #
-    # Returns: a Hash, with :encoding, :confidence, :type
-    #          this will return nil if an error occurred during detection or
-    #          no valid encoding could be found
-    def detect_encoding
-      @detect_encoding ||= CharlockHolmes::EncodingDetector.new.detect(data) if data
     end
 
     # Public: Is the blob binary according to its mime type
@@ -391,13 +380,6 @@ module Linguist
 
         # Try to detect Language from shebang line
         shebang_language
-    end
-
-    # Internal: Get the lexer of the blob.
-    #
-    # Returns a Lexer.
-    def lexer
-      language ? language.lexer : Pygments::Lexer.find_by_name('Text only')
     end
 
     # Internal: Disambiguates between multiple language extensions.
