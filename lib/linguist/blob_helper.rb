@@ -87,7 +87,7 @@ module Linguist
 
       # If Charlock says its binary
       else
-        detect_encoding[:type] == :binary
+        false
       end
     end
 
