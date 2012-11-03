@@ -54,12 +54,6 @@ module Linguist
         (encoding ? "text/plain; charset=#{encoding.downcase}" : "text/plain")
     end
 
-    def encoding
-      if hash = detect_encoding
-        hash[:encoding]
-      end
-    end
-
     # Public: Is the blob binary according to its mime type
     #
     # Return true or false
@@ -82,10 +76,6 @@ module Linguist
         false
 
       # Charlock doesn't know what to think
-      elsif encoding.nil?
-        true
-
-      # If Charlock says its binary
       else
         false
       end
