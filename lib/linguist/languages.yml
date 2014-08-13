@@ -455,13 +455,6 @@ HTML+PHP:
   extensions:
   - .phtml
 
-HaXe:
-  type: programming
-  extensions:
-  - .hx
-  - .hxml
-  - .mtt
-
 Haml:
   group: HTML
   type: markup
