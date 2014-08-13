@@ -342,7 +342,7 @@ Fancy:
 
 Fantom:
   type: programming
-  lexer: Java 
+  lexer: Java
   extensions:
   - .fan
 
@@ -457,7 +457,6 @@ HTML+PHP:
 
 HaXe:
   type: programming
-  lexer: haXe
   extensions:
   - .hx
   - .hxml
