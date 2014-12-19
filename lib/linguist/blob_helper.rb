@@ -299,6 +299,10 @@ module Linguist
             # bind and extend functions are very Coffee specific
             score += 3 * line.gsub(/(__bind|__extends|__hasProp|__indexOf|__slice)/).count
           end
+
+          # Return as soon as the score reaches 3.
+          # Otherwise this thing keeps iterating over huge files.
+          return true if score >= 3
         end
 
         # Require a score of 3. This is fairly arbitrary. Consider
